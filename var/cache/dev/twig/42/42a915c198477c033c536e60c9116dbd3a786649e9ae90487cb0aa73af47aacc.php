@@ -15,7 +15,6 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
         $this->parent = $this->loadTemplate("base.html.twig", "lift/index.html.twig", 1);
         $this->blocks = array(
             'body' => array($this, 'block_body'),
-            'stylesheets' => array($this, 'block_stylesheets'),
             'javascripts' => array($this, 'block_javascripts'),
         );
     }
@@ -91,7 +90,7 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
                 <h2 class=\"text-center\">
                     <img class=\"dumbbell\" src=\"";
         // line 38
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/dumbbell.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/static/dumbbell.png"), "html", null, true);
         echo "\" />
                     Leaderboard
                 </h2>
@@ -113,30 +112,6 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
     }
 
     // line 48
-    public function block_stylesheets($context, array $blocks = array())
-    {
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        // line 49
-        echo "    ";
-        $this->displayParentBlock("stylesheets", $context, $blocks);
-        echo "
-
-    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.css\" />
-";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-        
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
-
-    }
-
-    // line 54
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -145,23 +120,16 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 55
+        // line 49
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
 
-    <script src=\"https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.js\"></script>
     <script src=\"";
-        // line 58
+        // line 51
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/rep_log.js"), "html", null, true);
         echo "\"></script>
 
-    <script>
-        \$(document).ready(function() {
-            var \$wrapper = \$('.js-rep-log-table');
-            var repLogApp = new RepLogApp(\$wrapper);
-        });
-    </script>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -183,7 +151,7 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
 
     public function getDebugInfo()
     {
-        return array (  156 => 58,  149 => 55,  140 => 54,  125 => 49,  116 => 48,  101 => 42,  94 => 38,  85 => 32,  55 => 4,  46 => 3,  15 => 1,);
+        return array (  130 => 51,  124 => 49,  115 => 48,  100 => 42,  93 => 38,  84 => 32,  54 => 4,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -225,7 +193,7 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
         <div class=\"col-md-5\">
             <div class=\"leaderboard\">
                 <h2 class=\"text-center\">
-                    <img class=\"dumbbell\" src=\"{{ asset('assets/images/dumbbell.png') }}\" />
+                    <img class=\"dumbbell\" src=\"{{ asset('build/static/dumbbell.png') }}\" />
                     Leaderboard
                 </h2>
 
@@ -235,24 +203,11 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
     </div>
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.css\" />
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
 
-    <script src=\"https://cdn.jsdelivr.net/sweetalert2/6.1.0/sweetalert2.min.js\"></script>
     <script src=\"{{ asset('build/rep_log.js') }}\"></script>
 
-    <script>
-        \$(document).ready(function() {
-            var \$wrapper = \$('.js-rep-log-table');
-            var repLogApp = new RepLogApp(\$wrapper);
-        });
-    </script>
 {% endblock %}
 ", "lift/index.html.twig", "/Users/imac/Documents/sites_acasa/js_webpack/app/Resources/views/lift/index.html.twig");
     }

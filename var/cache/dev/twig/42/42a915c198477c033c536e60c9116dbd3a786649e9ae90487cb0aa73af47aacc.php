@@ -52,7 +52,10 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
 
         // line 4
         echo "    <div class=\"row\">
-        <div class=\"col-md-7 js-rep-log-table\">
+        <div class=\"col-md-7 js-rep-log-table\" data-rep-logs=\"";
+        // line 5
+        echo twig_escape_filter($this->env, (isset($context["repLogsJson"]) || array_key_exists("repLogsJson", $context) ? $context["repLogsJson"] : (function () { throw new Twig_Error_Runtime('Variable "repLogsJson" does not exist.', 5, $this->source); })()), "html_attr");
+        echo "\">
             <h2>
                 Lift History
             </h2>
@@ -87,16 +90,20 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
         </div>
         <div class=\"col-md-5\">
             <div class=\"leaderboard\">
-                <h2 class=\"text-center\">
+                <h2 class=\"text-center js-custom-popover\"
+                    data-toggle=\"popover\"
+                    title=\"About the Leaderboard\"
+                    data-content=\"Want to be the leader? Lift stuff\"
+                >
                     <img class=\"dumbbell\" src=\"";
-        // line 38
+        // line 42
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/static/dumbbell.png"), "html", null, true);
         echo "\" />
                     Leaderboard
                 </h2>
 
                 ";
-        // line 42
+        // line 46
         echo twig_include($this->env, $context, "lift/_leaderboard.html.twig");
         echo "
             </div>
@@ -111,7 +118,7 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
 
     }
 
-    // line 48
+    // line 52
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -120,16 +127,23 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 49
+        // line 53
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
 
     <script src=\"";
-        // line 51
+        // line 55
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/rep_log.js"), "html", null, true);
         echo "\"></script>
-
+    <script>
+        \$(document).ready(function(){
+           \$('.js-custom-popover').popover({
+               trigger: 'hover',
+               placement: 'left'
+           })
+        });
+    </script>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -151,7 +165,7 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
 
     public function getDebugInfo()
     {
-        return array (  130 => 51,  124 => 49,  115 => 48,  100 => 42,  93 => 38,  84 => 32,  54 => 4,  45 => 3,  15 => 1,);
+        return array (  137 => 55,  131 => 53,  122 => 52,  107 => 46,  100 => 42,  87 => 32,  57 => 5,  54 => 4,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -160,7 +174,7 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
 
 {% block body %}
     <div class=\"row\">
-        <div class=\"col-md-7 js-rep-log-table\">
+        <div class=\"col-md-7 js-rep-log-table\" data-rep-logs=\"{{ repLogsJson|e('html_attr') }}\">
             <h2>
                 Lift History
             </h2>
@@ -192,7 +206,11 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
         </div>
         <div class=\"col-md-5\">
             <div class=\"leaderboard\">
-                <h2 class=\"text-center\">
+                <h2 class=\"text-center js-custom-popover\"
+                    data-toggle=\"popover\"
+                    title=\"About the Leaderboard\"
+                    data-content=\"Want to be the leader? Lift stuff\"
+                >
                     <img class=\"dumbbell\" src=\"{{ asset('build/static/dumbbell.png') }}\" />
                     Leaderboard
                 </h2>
@@ -207,7 +225,14 @@ class __TwigTemplate_9bdec1dab808f4f19aac3826389269ad3f37521bcf4c76b9ef78dcd2a24
     {{ parent() }}
 
     <script src=\"{{ asset('build/rep_log.js') }}\"></script>
-
+    <script>
+        \$(document).ready(function(){
+           \$('.js-custom-popover').popover({
+               trigger: 'hover',
+               placement: 'left'
+           })
+        });
+    </script>
 {% endblock %}
 ", "lift/index.html.twig", "/Users/imac/Documents/sites_acasa/js_webpack/app/Resources/views/lift/index.html.twig");
     }

@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const styleLoader = {
     loader: 'style-loader',
@@ -30,7 +31,12 @@ const resolveUrlLoader = {
     }
 };
 
-module.exports = {
+const useDevServer = false;
+const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
+
+console.log(process.env.NODE_ENV);
+
+const webpackConfig = {
     entry: {
         rep_log: './assets/js/rep_log.js',
         login: './assets/js/login.js',
@@ -39,7 +45,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'web', 'build'),
         filename: "[name].js",
-        publicPath: "/build/"
+        publicPath: publicPath
     },
     module:{
         rules:[
@@ -55,19 +61,24 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    styleLoader,
-                    cssLoader
-                ]
+                use: ExtractTextPlugin.extract({
+                    use:[
+                        cssLoader
+                    ],
+                    //use this if CSS is not extracted
+                    fallback: styleLoader
+                })
             },
             {
                 test: /\.scss$/,
-                use: [
-                    styleLoader,
-                    cssLoader,
-                    resolveUrlLoader,
-                    sassLoader
-                ]
+                use: ExtractTextPlugin.extract({
+                    use:[
+                        cssLoader,
+                        resolveUrlLoader,
+                        sassLoader
+                    ],
+                    fallback: styleLoader
+                })
             },
             {
                 test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
@@ -104,7 +115,31 @@ module.exports = {
             // copies to {output}/static
             { from: './assets/static', to: 'static' }
         ]),
+        new webpack.optimize.CommonsChunkPlugin({
+
+            name: [
+                //layout is an entry file
+                //anithing including in layout, is not included in other output files
+                'layout',
+                //dumps the mainfest in a separate file
+                'manifest'
+            ],
+            minChuncks: Infinity,
+        }),
+
+        new ExtractTextPlugin('[name].css'),
     ],
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './web',
+        headers:{ 'Access-Control-Allow-Origin': '*' }
+    }
 };
+
+if(process.env.NODE_ENV === 'production'){
+    webpackConfig.plugins.push(
+      new webpack.optimize.UglifyJsPlugin(),
+    );
+}
+module.exports = webpackConfig;
 

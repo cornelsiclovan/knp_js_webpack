@@ -60,7 +60,7 @@ final class Versions
   'zendframework/zend-eventmanager' => '3.2.0@9d72db10ceb6e42fb92350c0cb54460da61bd79c',
   'sensio/generator-bundle' => 'v3.1.6@128bc5dabc91ca40b7445f094968dd70ccd58305',
   'symfony/phpunit-bridge' => 'v3.3.5@c2c124b7f9de79f4a64dc011f041a3a2c768b913',
-  'weaverryan/js-tmp' => '1.0.0.0@',
+  'weaverryan/js-tmp' => '9999999-dev@0aacfa7b4a28cdc0d4bca67f37d4f02d248dadbc',
 );
 
     private function __construct()

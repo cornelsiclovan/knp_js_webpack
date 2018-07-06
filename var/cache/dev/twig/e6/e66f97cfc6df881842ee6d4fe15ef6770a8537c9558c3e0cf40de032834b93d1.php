@@ -14,6 +14,7 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
         // line 1
         $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "@FOSUser/Security/login.html.twig", 1);
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
             'javascripts' => array($this, 'block_javascripts'),
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -42,6 +43,33 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
     }
 
     // line 5
+    public function block_stylesheets($context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 6
+        echo "    ";
+        $this->displayParentBlock("stylesheets", $context, $blocks);
+        echo "
+
+    <link rel=\"stylesheet\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/login.css"), "html", null, true);
+        echo "\">
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 11
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -50,13 +78,13 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 6
+        // line 12
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
 
     <script src=\"";
-        // line 8
+        // line 14
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/login.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -68,7 +96,7 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
 
     }
 
-    // line 11
+    // line 17
     public function block_fos_user_content($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -77,15 +105,15 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
-        // line 12
+        // line 18
         echo "    <div class=\"container\">
         <div class=\"wrapper\">
             <form action=\"";
-        // line 14
+        // line 20
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("fos_user_security_check");
         echo "\" method=\"post\" class=\"form-signin\">
                 <h3><img class=\"dumbbell\" src=\"";
-        // line 15
+        // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/static/dumbbell.png"), "html", null, true);
         echo "\">Login! Start Lifting!</h3>
                 <div class=\"js-recommended-login\">
@@ -111,26 +139,26 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
                 <br/>
 
                 ";
-        // line 38
-        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new Twig_Error_Runtime('Variable "error" does not exist.', 38, $this->source); })())) {
-            // line 39
+        // line 44
+        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new Twig_Error_Runtime('Variable "error" does not exist.', 44, $this->source); })())) {
+            // line 45
             echo "                    <div class=\"alert alert-block alert-danger\">";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new Twig_Error_Runtime('Variable "error" does not exist.', 39, $this->source); })()), "messageKey", array()), array(), "FOSUserBundle"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new Twig_Error_Runtime('Variable "error" does not exist.', 45, $this->source); })()), "messageKey", array()), array(), "FOSUserBundle"), "html", null, true);
             echo "</div>
                 ";
         }
-        // line 41
+        // line 47
         echo "
                 <input type=\"text\"
                        class=\"form-control js-login-field-username\"
                        name=\"_username\"
                        value=\"";
-        // line 45
-        echo twig_escape_filter($this->env, (isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new Twig_Error_Runtime('Variable "last_username" does not exist.', 45, $this->source); })()), "html", null, true);
+        // line 51
+        echo twig_escape_filter($this->env, (isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new Twig_Error_Runtime('Variable "last_username" does not exist.', 51, $this->source); })()), "html", null, true);
         echo "\"
                        required=\"required\"
                        placeholder=\"";
-        // line 47
+        // line 53
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
         echo "\"
                 />
@@ -139,7 +167,7 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
                        name=\"_password\"
                        required=\"required\"
                        placeholder=\"";
-        // line 53
+        // line 59
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
         echo "\"
                 />
@@ -147,8 +175,8 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
                 <input type=\"checkbox\" name=\"_remember_me\" checked style=\"display: none;\" />
 
                 <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 58
-        echo twig_escape_filter($this->env, (isset($context["csrf_token"]) || array_key_exists("csrf_token", $context) ? $context["csrf_token"] : (function () { throw new Twig_Error_Runtime('Variable "csrf_token" does not exist.', 58, $this->source); })()), "html", null, true);
+        // line 64
+        echo twig_escape_filter($this->env, (isset($context["csrf_token"]) || array_key_exists("csrf_token", $context) ? $context["csrf_token"] : (function () { throw new Twig_Error_Runtime('Variable "csrf_token" does not exist.', 64, $this->source); })()), "html", null, true);
         echo "\" />
                 <button type=\"submit\" class=\"btn btn-primary btn-lg btn-block\">
                     Login
@@ -177,7 +205,7 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
 
     public function getDebugInfo()
     {
-        return array (  151 => 58,  143 => 53,  134 => 47,  129 => 45,  123 => 41,  117 => 39,  115 => 38,  89 => 15,  85 => 14,  81 => 12,  72 => 11,  60 => 8,  54 => 6,  45 => 5,  15 => 1,);
+        return array (  179 => 64,  171 => 59,  162 => 53,  157 => 51,  151 => 47,  145 => 45,  143 => 44,  117 => 21,  113 => 20,  109 => 18,  100 => 17,  88 => 14,  82 => 12,  73 => 11,  61 => 8,  55 => 6,  46 => 5,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -185,6 +213,12 @@ class __TwigTemplate_c4b90ba3ff88b81b6f5ccc497bd9e56506c7cf2ea01d09aad3587dfb238
         return new Twig_Source("{% extends \"FOSUserBundle::layout.html.twig\" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel=\"stylesheet\" href=\"{{ asset('build/login.css') }}\">
+{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}

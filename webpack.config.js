@@ -2,18 +2,28 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const WebpackChunkHash = require('webpack-chunk-hash');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const useDevServer = false;
+const useVersioning = true;
+const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
+const isProduction = process.env.NODE_ENV === 'production';
+const useSourcemaps = !isProduction;
 
 const styleLoader = {
     loader: 'style-loader',
     options: {
-        sourceMap: true
+        sourceMap: useSourcemaps
     }
 };
 
 const cssLoader = {
     loader: 'css-loader',
     options: {
-        sourceMap: true
+        sourceMap: useSourcemaps,
+        minimize: isProduction
     }
 };
 
@@ -27,12 +37,11 @@ const sassLoader = {
 const resolveUrlLoader = {
     loader: 'resolve-url-loader',
     options: {
-        sourceMap: true
+        sourceMap: useSourcemaps
     }
 };
 
-const useDevServer = false;
-const publicPath = useDevServer ? 'http://localhost:8080/build/' : '/build/';
+
 
 console.log(process.env.NODE_ENV);
 
@@ -44,7 +53,7 @@ const webpackConfig = {
     },
     output: {
         path: path.resolve(__dirname, 'web', 'build'),
-        filename: "[name].js",
+        filename: useVersioning ? '[name].[chunkhash:6].js' : '[name].js',
         publicPath: publicPath
     },
     module:{
@@ -127,18 +136,46 @@ const webpackConfig = {
             minChuncks: Infinity,
         }),
 
-        new ExtractTextPlugin('[name].css'),
+        new ExtractTextPlugin(
+            useVersioning ? '[name].[contenthash].css' : '[name].css'
+        ),
+
+        new ManifestPlugin({
+            writeToFileEmit: true,
+            basePath:'build/'
+        }),
+
+        new WebpackChunkHash(),
+
+        isProduction ? new webpack.HashedModuleIdsPlugin(): new webpack.NamedModulesPlugin(),
+
+        new CleanWebpackPlugin('web/build/**/*.*')
+
     ],
-    devtool: 'inline-source-map',
+    devtool: useSourcemaps ? 'inline-source-map': false,
     devServer: {
         contentBase: './web',
         headers:{ 'Access-Control-Allow-Origin': '*' }
     }
 };
 
-if(process.env.NODE_ENV === 'production'){
+if(isProduction){
     webpackConfig.plugins.push(
-      new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+    );
+
+    webpackConfig.plugins.push(
+        //pass these two options to all loaders
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+        }),
+    );
+
+    webpackConfig.plugins.push(
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        })
     );
 }
 module.exports = webpackConfig;
